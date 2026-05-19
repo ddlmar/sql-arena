@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "title": "Contagem de Usuários por Cidade",
+  "description": "Agrupe os usuários pela cidade em que moram e exiba a cidade e a quantidade total de usuários em cada uma. Nomeie a coluna de contagem como \"total_usuarios\".",
+  "difficulty": "Médio",
+  "expectedQuery": "SELECT cidade, COUNT(*) AS total_usuarios FROM usuarios GROUP BY cidade",
+  "placeholderSql": "-- Agrupe e conte os usuários\nSELECT cidade,",
+  "hints": [
+    "Use a função de agregação COUNT(*) para contar os registros.",
+    "Renomeie a contagem usando a palavra-chave AS: COUNT(*) AS total_usuarios.",
+    "Não se esqueça de usar a cláusula GROUP BY com a coluna \"cidade\" para que a agregação funcione."
+  ]
+}

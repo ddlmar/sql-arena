@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "title": "Visualizar Todos os Produtos",
+  "description": "Selecione todos os campos (todas as colunas) de todos os itens cadastrados na tabela de produtos.",
+  "difficulty": "Fácil",
+  "expectedQuery": "SELECT * FROM produtos",
+  "placeholderSql": "-- Escreva seu SQL aqui\nSELECT",
+  "hints": [
+    "Use o caractere curinga * para selecionar todas as colunas.",
+    "A tabela de destino é \"produtos\".",
+    "A sintaxe básica é: SELECT * FROM nome_da_tabela;"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "pedidos",
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "description": "ID único do pedido"
+    },
+    {
+      "name": "usuario_id",
+      "type": "INT",
+      "description": "ID do usuário que fez o pedido (Chave Estrangeira)"
+    },
+    {
+      "name": "data_pedido",
+      "type": "DATE",
+      "description": "Data em que o pedido foi realizado (AAAA-MM-DD)"
+    },
+    {
+      "name": "valor_total",
+      "type": "DECIMAL(10,2)",
+      "description": "Valor total cobrado pelo pedido"
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR",
+      "description": "Status do pedido (Entregue, Pendente, Cancelado)"
+    }
+  ],
+  "data": [
+    {
+      "id": 101,
+      "usuario_id": 1,
+      "data_pedido": "2026-04-05",
+      "valor_total": 4850,
+      "status": "Entregue"
+    },
+    {
+      "id": 102,
+      "usuario_id": 2,
+      "data_pedido": "2026-04-12",
+      "valor_total": 2999.9,
+      "status": "Entregue"
+    },
+    {
+      "id": 103,
+      "usuario_id": 1,
+      "data_pedido": "2026-04-18",
+      "valor_total": 199.9,
+      "status": "Pendente"
+    },
+    {
+      "id": 104,
+      "usuario_id": 3,
+      "data_pedido": "2026-04-22",
+      "valor_total": 1200,
+      "status": "Cancelado"
+    },
+    {
+      "id": 105,
+      "usuario_id": 4,
+      "data_pedido": "2026-05-02",
+      "valor_total": 3349.9,
+      "status": "Entregue"
+    },
+    {
+      "id": 106,
+      "usuario_id": 5,
+      "data_pedido": "2026-05-10",
+      "valor_total": 1800,
+      "status": "Pendente"
+    }
+  ]
+}

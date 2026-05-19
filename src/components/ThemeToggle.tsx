@@ -32,14 +32,22 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const [mode, setMode] = useState<ThemeMode>(getInitialMode);
+  const [mounted, setMounted] = useState(false);
+  const [mode, setMode] = useState<ThemeMode>('auto');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    setMode(getInitialMode());
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     applyThemeMode(mode);
-  }, [mode]);
+  }, [mode, mounted]);
 
   useEffect(() => {
-    if (mode !== 'auto') {
+    if (!mounted || mode !== 'auto') {
       return;
     }
 
@@ -50,7 +58,7 @@ export default function ThemeToggle() {
     return () => {
       media.removeEventListener('change', onChange);
     };
-  }, [mode]);
+  }, [mode, mounted]);
 
   function toggleMode() {
     const nextMode: ThemeMode = mode === 'light' ? 'dark' : mode === 'dark' ? 'auto' : 'light';
@@ -59,10 +67,13 @@ export default function ThemeToggle() {
     window.localStorage.setItem('theme', nextMode);
   }
 
+  // Fallback to 'auto' during SSR and initial hydration to guarantee DOM parity
+  const displayMode = mounted ? mode : 'auto';
+
   const label =
-    mode === 'auto'
+    displayMode === 'auto'
       ? 'Theme mode: auto (system). Click to switch to light mode.'
-      : `Theme mode: ${mode}. Click to switch mode.`;
+      : `Theme mode: ${displayMode}. Click to switch mode.`;
 
   return (
     <button
@@ -72,7 +83,7 @@ export default function ThemeToggle() {
       title={label}
       className="rounded-full border border-(--chip-line) bg-(--chip-bg) px-3 py-1.5 text-sm font-semibold text-(--sea-ink) shadow-[0_8px_22px_rgba(30,90,72,0.08)] transition hover:-translate-y-0.5"
     >
-      {mode === 'auto' ? 'Auto' : mode === 'dark' ? 'Dark' : 'Light'}
+      {displayMode === 'auto' ? 'Auto' : displayMode === 'dark' ? 'Dark' : 'Light'}
     </button>
   );
 }

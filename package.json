@@ -11,9 +11,10 @@
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint src",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "format": "prettier --write \"{src,content,scripts}/**/*.{ts,tsx,css,json}\" \"*.md\"",
     "typecheck": "tsc --noEmit",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "sync-content": "tsx scripts/sync-content.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -30,6 +31,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.18",
+    "zod": "^4.4.3",
     "zustand": "^5.0.13"
   },
   "devDependencies": {
@@ -51,6 +53,7 @@
     "jsdom": "^28.1.0",
     "lefthook": "^2.1.6",
     "prettier": "^3.8.3",
+    "tsx": "^4.22.2",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
     "vitest": "^4.1.5"

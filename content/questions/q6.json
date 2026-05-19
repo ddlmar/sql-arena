@@ -1,0 +1,13 @@
+{
+  "id": 6,
+  "title": "Produtos com Baixo Estoque",
+  "description": "Liste o nome, a categoria e o estoque de todos os produtos que possuem menos de 20 unidades em estoque, ordenados de forma decrescente (do maior estoque para o menor).",
+  "difficulty": "Médio",
+  "expectedQuery": "SELECT nome, categoria, estoque FROM produtos WHERE estoque < 20 ORDER BY estoque DESC",
+  "placeholderSql": "-- Filtre e ordene de forma decrescente\nSELECT",
+  "hints": [
+    "Filtre registros com estoque menor que 20 usando: WHERE estoque < 20.",
+    "Ordene de forma decrescente usando a cláusula ORDER BY com a palavra-chave DESC.",
+    "A consulta deve retornar exatamente as colunas \"nome\", \"categoria\" e \"estoque\"."
+  ]
+}

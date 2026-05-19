@@ -1,0 +1,13 @@
+{
+  "id": 7,
+  "title": "Faturamento Total por Categoria",
+  "description": "Calcule o faturamento total obtido (a soma de quantidade multiplicada pelo preco_unitario de cada item comprado) para cada categoria de produto. Exiba a categoria e a soma total formatada com o nome de \"faturamento_total\".",
+  "difficulty": "Difícil",
+  "expectedQuery": "SELECT p.categoria, SUM(i.quantidade * i.preco_unitario) AS faturamento_total FROM itens_pedido i JOIN produtos p ON i.produto_id = p.id GROUP BY p.categoria",
+  "placeholderSql": "-- Calcule o faturamento agrupando por categoria\nSELECT",
+  "hints": [
+    "Faça uma junção entre \"itens_pedido\" (i) e \"produtos\" (p) pelo ID do produto.",
+    "Use SUM(quantidade * preco_unitario) para calcular a receita total.",
+    "Agrupe o resultado usando GROUP BY p.categoria."
+  ]
+}

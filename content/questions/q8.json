@@ -1,0 +1,13 @@
+{
+  "id": 8,
+  "title": "Clientes de Alto Valor (Gasto > R$ 3000)",
+  "description": "Identifique os nomes dos clientes e a soma total gasta por eles em todos os seus pedidos combinados. Filtre o resultado para exibir apenas os clientes que gastaram mais de R$ 3000 no total. Nomeie a coluna de soma como \"total_gasto\".",
+  "difficulty": "Difícil",
+  "expectedQuery": "SELECT u.nome, SUM(p.valor_total) AS total_gasto FROM pedidos p JOIN usuarios u ON p.usuario_id = u.id GROUP BY u.nome HAVING SUM(p.valor_total) > 3000",
+  "placeholderSql": "-- Use HAVING para filtrar o agrupamento\nSELECT",
+  "hints": [
+    "Junte \"pedidos\" com \"usuarios\" para obter o nome do cliente.",
+    "Use SUM(valor_total) AS total_gasto e agrupe pelo nome do usuário (GROUP BY u.nome).",
+    "Para filtrar uma função agregada, você DEVE usar a cláusula HAVING (ex: HAVING SUM(valor_total) > 3000) em vez do WHERE."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "usuarios",
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "description": "ID único do usuário"
+    },
+    {
+      "name": "nome",
+      "type": "VARCHAR",
+      "description": "Nome completo do usuário"
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR",
+      "description": "Endereço de e-mail do usuário"
+    },
+    {
+      "name": "data_cadastro",
+      "type": "DATE",
+      "description": "Data de cadastro do usuário (AAAA-MM-DD)"
+    },
+    {
+      "name": "cidade",
+      "type": "VARCHAR",
+      "description": "Cidade de residência"
+    }
+  ],
+  "data": [
+    {
+      "id": 1,
+      "nome": "Ana Souza",
+      "email": "ana@email.com",
+      "data_cadastro": "2026-01-10",
+      "cidade": "São Paulo"
+    },
+    {
+      "id": 2,
+      "nome": "Lucas Lima",
+      "email": "lucas@email.com",
+      "data_cadastro": "2026-02-14",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": 3,
+      "nome": "Carla Diaz",
+      "email": "carla@email.com",
+      "data_cadastro": "2026-03-01",
+      "cidade": "Belo Horizonte"
+    },
+    {
+      "id": 4,
+      "nome": "Bruno Alves",
+      "email": "bruno@email.com",
+      "data_cadastro": "2026-03-15",
+      "cidade": "São Paulo"
+    },
+    {
+      "id": 5,
+      "nome": "Mariana Costa",
+      "email": "mariana@email.com",
+      "data_cadastro": "2026-04-20",
+      "cidade": "Porto Alegre"
+    }
+  ]
+}

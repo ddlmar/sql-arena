@@ -37,12 +37,15 @@ export const useGameStore = create<GameState>((set, get) => {
     return 0;
   };
 
+  const initialSql = QUESTIONS[0]?.placeholderSql || '';
+  const initialExec = executeQuery(initialSql);
+
   return {
     currentQuestionIndex: 0,
-    userSql: QUESTIONS[0]?.placeholderSql || '',
-    executionResult: null,
-    executionColumns: [],
-    executionError: null,
+    userSql: initialSql,
+    executionResult: initialExec.data,
+    executionColumns: initialExec.columns,
+    executionError: initialExec.error,
     hasSubmitted: false,
     isCorrect: null,
     errorMessage: null,

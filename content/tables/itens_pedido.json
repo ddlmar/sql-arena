@@ -1,0 +1,88 @@
+{
+  "name": "itens_pedido",
+  "columns": [
+    {
+      "name": "id",
+      "type": "INT",
+      "description": "ID único do item do pedido"
+    },
+    {
+      "name": "pedido_id",
+      "type": "INT",
+      "description": "ID do pedido associado (Chave Estrangeira)"
+    },
+    {
+      "name": "produto_id",
+      "type": "INT",
+      "description": "ID do produto associado (Chave Estrangeira)"
+    },
+    {
+      "name": "quantidade",
+      "type": "INT",
+      "description": "Quantidade comprada do produto"
+    },
+    {
+      "name": "preco_unitario",
+      "type": "DECIMAL(10,2)",
+      "description": "Preço cobrado pela unidade do produto no momento da compra"
+    }
+  ],
+  "data": [
+    {
+      "id": 1,
+      "pedido_id": 101,
+      "produto_id": 1,
+      "quantidade": 1,
+      "preco_unitario": 4500
+    },
+    {
+      "id": 2,
+      "pedido_id": 101,
+      "produto_id": 3,
+      "quantidade": 1,
+      "preco_unitario": 350
+    },
+    {
+      "id": 3,
+      "pedido_id": 102,
+      "produto_id": 2,
+      "quantidade": 1,
+      "preco_unitario": 2999.9
+    },
+    {
+      "id": 4,
+      "pedido_id": 103,
+      "produto_id": 5,
+      "quantidade": 1,
+      "preco_unitario": 199.9
+    },
+    {
+      "id": 5,
+      "pedido_id": 104,
+      "produto_id": 6,
+      "quantidade": 1,
+      "preco_unitario": 1200
+    },
+    {
+      "id": 6,
+      "pedido_id": 105,
+      "produto_id": 2,
+      "quantidade": 1,
+      "preco_unitario": 2999.9
+    },
+    {
+      "id": 7,
+      "pedido_id": 105,
+      "produto_id": 3,
+      "quantidade": 1,
+      "preco_unitario": 350
+    },
+    {
+      "id": 8,
+      "pedido_id": 106,
+      "produto_id": 4,
+      "quantidade": 1,
+      "preco_unitario": 1800
+    }
+  ]
+}

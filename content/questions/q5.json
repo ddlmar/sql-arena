@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "title": "Juntar Pedidos com Usuários",
+  "description": "Liste o ID do pedido, a data do pedido, o nome do usuário comprador e o valor total de todos os pedidos que possuem o status \"Entregue\".",
+  "difficulty": "Médio",
+  "expectedQuery": "SELECT p.id, p.data_pedido, u.nome, p.valor_total FROM pedidos p JOIN usuarios u ON p.usuario_id = u.id WHERE p.status = 'Entregue'",
+  "placeholderSql": "-- Use JOIN para juntar as tabelas\nSELECT",
+  "hints": [
+    "Você precisará fazer um INNER JOIN (ou apenas JOIN) entre a tabela \"pedidos\" (p) e a tabela \"usuarios\" (u).",
+    "A condição de junção no ON é que pedidos.usuario_id seja igual a usuarios.id.",
+    "Filtre pelo status usando WHERE status = 'Entregue'."
+  ]
+}

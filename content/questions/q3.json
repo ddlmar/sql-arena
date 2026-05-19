@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "title": "Ordenar Produtos por Preço",
+  "description": "Obtenha o nome e o preco de todos os produtos, ordenando-os do mais barato (menor preço) para o mais caro (maior preço).",
+  "difficulty": "Fácil",
+  "expectedQuery": "SELECT nome, preco FROM produtos ORDER BY preco ASC",
+  "placeholderSql": "-- Ordene os produtos por preço\nSELECT nome, preco FROM produtos",
+  "hints": [
+    "Use a cláusula ORDER BY no final da sua consulta.",
+    "Para ordenar de forma crescente (do menor para o maior), use a palavra-chave ASC (ou deixe sem, pois é o padrão).",
+    "A coluna a ser ordenada é \"preco\"."
+  ]
+}

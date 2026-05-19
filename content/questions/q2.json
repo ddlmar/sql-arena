@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "title": "Filtrar Usuários por Cidade",
+  "description": "Selecione apenas o nome e o email de todos os usuários que moram na cidade de \"São Paulo\".",
+  "difficulty": "Fácil",
+  "expectedQuery": "SELECT nome, email FROM usuarios WHERE cidade = 'São Paulo'",
+  "placeholderSql": "-- Filtre os usuários paulistas\nSELECT nome, email FROM",
+  "hints": [
+    "Você deve selecionar apenas as colunas \"nome\" e \"email\" (separadas por vírgula).",
+    "Use a cláusula WHERE para filtrar registros.",
+    "Lembre-se de colocar a string 'São Paulo' entre aspas simples."
+  ]
+}

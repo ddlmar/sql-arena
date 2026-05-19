@@ -1,0 +1,13 @@
+{
+  "id": 9,
+  "title": "Produtos Nunca Vendidos",
+  "description": "Selecione o nome de todos os produtos que nunca foram vendidos (ou seja, não possuem nenhum registro correspondente na tabela \"itens_pedido\").",
+  "difficulty": "Difícil",
+  "expectedQuery": "SELECT p.nome FROM produtos p LEFT JOIN itens_pedido i ON p.id = i.produto_id WHERE i.produto_id IS NULL",
+  "placeholderSql": "-- Descubra produtos sem nenhuma venda\nSELECT",
+  "hints": [
+    "Uma forma clássica é usar LEFT JOIN da tabela \"produtos\" (esquerda) com \"itens_pedido\" (direita) pelo ID do produto.",
+    "Ao fazer o LEFT JOIN, produtos não vendidos terão valores nulos nos campos da tabela \"itens_pedido\".",
+    "Filtre com WHERE i.produto_id IS NULL (ou use NOT IN com uma subquery: WHERE id NOT IN (SELECT produto_id FROM itens_pedido))."
+  ]
+}

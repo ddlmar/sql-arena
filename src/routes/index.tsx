@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGameStore } from '@/store/gameStore';
 import { QUESTIONS } from '@/data/questions';
 import { initDb } from '@/data/dbEngine';
@@ -22,14 +22,15 @@ function SQLGameApp() {
     isCorrect,
     resetGame,
     nextQuestion,
-    selectQuestion,
   } = useGameStore();
 
-  useEffect(() => {
-    initDb();
+  const [mounted, setMounted] = useState(false);
 
-    selectQuestion(0);
-  }, [selectQuestion]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    initDb();
+  }, []);
 
   const isArenaCompleted = completedQuestions.length === QUESTIONS.length;
 
@@ -89,7 +90,7 @@ function SQLGameApp() {
             </span>
             <span className="font-mono text-base font-extrabold text-(--sea-ink) flex items-center gap-1">
               <Trophy className="h-4 w-4 text-yellow-500 fill-current" />
-              {highScore}
+              {mounted ? highScore : 0}
             </span>
           </div>
         </div>

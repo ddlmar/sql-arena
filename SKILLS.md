@@ -31,30 +31,38 @@ sql-exercises/
 ## 🧭 Mapeamento e Responsabilidade das Pastas
 
 ### 1. `src/components/`
+
 **Objetivo**: Alojar componentes de UI modulares, puros (sempre que possível) e com escopo único.
-*   **Padrões de Código**:
-    *   Sempre use importações com alias `@/` em vez de caminhos relativos (ex. `import TableViewer from '@/components/TableViewer'`).
-    *   Mantenha os componentes focados: um componente deve fazer apenas uma coisa (ex: `SqlEditor` cuida apenas do input de texto e números de linha).
-    *   Evite efeitos colaterais locais se os estados puderem ser centralizados ou gerenciados pela Store Global.
+
+- **Padrões de Código**:
+  - Sempre use importações com alias `@/` em vez de caminhos relativos (ex. `import TableViewer from '@/components/TableViewer'`).
+  - Mantenha os componentes focados: um componente deve fazer apenas uma coisa (ex: `SqlEditor` cuida apenas do input de texto e números de linha).
+  - Evite efeitos colaterais locais se os estados puderem ser centralizados ou gerenciados pela Store Global.
 
 ### 2. `src/data/`
+
 **Objetivo**: Lógica de banco de dados, motor de execução SQL (AlaSQL) e arquivos de dados estáticos.
-*   **Padrões de Código**:
-    *   `dbEngine.ts`: Centraliza a inicialização, execução de consultas e grading inteligente dos resultados. Quaisquer alterações em comportamento de query devem ser feitas apenas aqui.
-    *   `questions.ts`: Contém o gabarito das questões. Mantenha os schemas e objetos de exercícios estruturados usando interfaces TypeScript estritas (`Question`, `TableSchema`).
+
+- **Padrões de Código**:
+  - `dbEngine.ts`: Centraliza a inicialização, execução de consultas e grading inteligente dos resultados. Quaisquer alterações em comportamento de query devem ser feitas apenas aqui.
+  - `questions.ts`: Contém o gabarito das questões. Mantenha os schemas e objetos de exercícios estruturados usando interfaces TypeScript estritas (`Question`, `TableSchema`).
 
 ### 3. `src/store/`
+
 **Objetivo**: Gerenciamento de estado global centralizado usando **Zustand**.
-*   **Padrões de Código**:
-    *   Mantenha um único arquivo de estado principal (`gameStore.ts`) para evitar a complexidade de múltiplos contextos.
-    *   A store deve conter tanto o **estado reativo** quanto as **ações** que o modificam (encapsulamento).
-    *   Utilize o `localStorage` para persistir recordes de maior pontuação (`highScore`).
+
+- **Padrões de Código**:
+  - Mantenha um único arquivo de estado principal (`gameStore.ts`) para evitar a complexidade de múltiplos contextos.
+  - A store deve conter tanto o **estado reativo** quanto as **ações** que o modificam (encapsulamento).
+  - Utilize o `localStorage` para persistir recordes de maior pontuação (`highScore`).
 
 ### 4. `src/routes/`
+
 **Objetivo**: Roteamento baseado em arquivos gerenciado pelo **TanStack Router**.
-*   **Padrões de Código**:
-    *   `__root.tsx` serve como layout global (Header + Conteúdo + Footer).
-    *   `index.tsx` atua como a página de entrada e deve apenas orquestrar os componentes secundários da UI, injetando os dados provenientes da Store.
+
+- **Padrões de Código**:
+  - `__root.tsx` serve como layout global (Header + Conteúdo + Footer).
+  - `index.tsx` atua como a página de entrada e deve apenas orquestrar os componentes secundários da UI, injetando os dados provenientes da Store.
 
 ---
 
@@ -63,18 +71,18 @@ sql-exercises/
 Para garantir que a interface seja altamente premium e livre de alertas do compilador de CSS, siga estes padrões:
 
 1.  **Sintaxe de Variáveis no Tailwind**:
-    *   **Proibido**: Usar a sintaxe arbitrária antiga `border-[var(--line)]`.
-    *   **Obrigatório**: Usar a sintaxe simplificada do Tailwind v4: `border-(--line)`, `bg-(--chip-bg)`, `text-(--sea-ink)`.
+    - **Proibido**: Usar a sintaxe arbitrária antiga `border-[var(--line)]`.
+    - **Obrigatório**: Usar a sintaxe simplificada do Tailwind v4: `border-(--line)`, `bg-(--chip-bg)`, `text-(--sea-ink)`.
 2.  **Paleta Harmoniosa**:
-    *   Utilize as variáveis CSS semânticas definidas no `src/styles.css` (`--sea-ink`, `--lagoon`, `--lagoon-deep`, `--line`, etc.) para suporte automático a temas.
+    - Utilize as variáveis CSS semânticas definidas no `src/styles.css` (`--sea-ink`, `--lagoon`, `--lagoon-deep`, `--line`, etc.) para suporte automático a temas.
 
 ---
 
 ## 🤖 Padrões de Código Limpo (Clean Code)
 
-*   **TypeScript Estrito**: Nunca utilize `any` se for possível inferir ou criar uma interface adequada. Use `import type` para importar interfaces que são apagadas no build.
-*   **Sem Comentários Redundantes**: Escreva código autoexplicativo usando nomes descritivos para variáveis e funções. Comentários devem explicar o *porquê*, nunca o *o quê* o código está fazendo.
-*   **Importações Limpas**: Use a convenção `@/*` configurada tanto no `tsconfig.json` quanto no `vite.config.ts`.
+- **TypeScript Estrito**: Nunca utilize `any` se for possível inferir ou criar uma interface adequada. Use `import type` para importar interfaces que são apagadas no build.
+- **Sem Comentários Redundantes**: Escreva código autoexplicativo usando nomes descritivos para variáveis e funções. Comentários devem explicar o _porquê_, nunca o _o quê_ o código está fazendo.
+- **Importações Limpas**: Use a convenção `@/*` configurada tanto no `tsconfig.json` quanto no `vite.config.ts`.
 
 ---
 
@@ -82,19 +90,19 @@ Para garantir que a interface seja altamente premium e livre de alertas do compi
 
 Configure e execute estes comandos no terminal para garantir a consistência do código antes de realizar commits:
 
-*   **Formatação automática**:
-    ```bash
-    pnpm format
-    ```
-*   **Validação de regras (Linter)**:
-    ```bash
-    pnpm lint
-    ```
-*   **Checagem estrita de tipos**:
-    ```bash
-    pnpm typecheck
-    ```
-*   **Compilação de produção (Validação de Build)**:
-    ```bash
-    pnpm build
-    ```
+- **Formatação automática**:
+  ```bash
+  pnpm format
+  ```
+- **Validação de regras (Linter)**:
+  ```bash
+  pnpm lint
+  ```
+- **Checagem estrita de tipos**:
+  ```bash
+  pnpm typecheck
+  ```
+- **Compilação de produção (Validação de Build)**:
+  ```bash
+  pnpm build
+  ```
