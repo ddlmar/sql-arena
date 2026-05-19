@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DB_MOCK_DATA } from '../data/questions';
+import { useState } from 'react';
+import { DB_MOCK_DATA } from '@/data/questions';
 import { Eye, Table } from 'lucide-react';
 
 export default function TableViewer() {
@@ -11,22 +11,24 @@ export default function TableViewer() {
 
   return (
     <div className="island-shell flex flex-col rounded-2xl p-5">
-      <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
+      <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-(--line) pb-3">
         <div className="flex items-center gap-2">
-          <Eye className="h-5 w-5 text-[var(--lagoon-deep)]" />
-          <h2 className="text-base font-semibold text-[var(--sea-ink)]">Visualizador de Dados das Tabelas</h2>
+          <Eye className="h-5 w-5 text-(--lagoon-deep)" />
+          <h2 className="text-base font-semibold text-(--sea-ink)">
+            Visualizador de Dados das Tabelas
+          </h2>
         </div>
-        
-        {/* Table Tabs */}
-        <div className="flex flex-wrap gap-1.5 bg-white/20 p-1 rounded-lg border border-[var(--line)]">
+
+        {}
+        <div className="flex flex-wrap gap-1.5 bg-white/20 p-1 rounded-lg border border-(--line)">
           {tableNames.map((name) => (
             <button
               key={name}
               onClick={() => setActiveTable(name)}
               className={`rounded-md px-3 py-1 font-mono text-xs font-semibold transition-all ${
                 activeTable === name
-                  ? 'bg-[var(--lagoon-deep)] text-white shadow-sm'
-                  : 'text-[var(--sea-ink-soft)] hover:bg-white/40 hover:text-[var(--sea-ink)]'
+                  ? 'bg-(--lagoon-deep) text-white shadow-sm'
+                  : 'text-(--sea-ink-soft) hover:bg-white/40 hover:text-(--sea-ink)'
               }`}
             >
               {name}
@@ -35,20 +37,18 @@ export default function TableViewer() {
         </div>
       </div>
 
-      <p className="mb-4 text-xs text-[var(--sea-ink-soft)] flex items-center gap-1.5">
-        <Table className="h-3.5 w-3.5" /> Exibindo {rawRows.length} registros da tabela <strong className="font-mono">{activeTable}</strong>:
+      <p className="mb-4 text-xs text-(--sea-ink-soft) flex items-center gap-1.5">
+        <Table className="h-3.5 w-3.5" /> Exibindo {rawRows.length} registros da tabela{' '}
+        <strong className="font-mono">{activeTable}</strong>:
       </p>
 
-      {/* Responsive Table Container */}
-      <div className="flex-1 overflow-x-auto rounded-lg border border-[var(--line)] bg-white/30 max-h-[250px] overflow-y-auto">
+      {}
+      <div className="flex-1 overflow-x-auto rounded-lg border border-(--line) bg-white/30 max-h-[250px] overflow-y-auto">
         <table className="w-full border-collapse text-left text-xs font-sans">
           <thead>
-            <tr className="bg-[var(--chip-bg)] border-b border-[var(--line)] sticky top-0 backdrop-blur-sm z-10">
+            <tr className="bg-(--chip-bg) border-b border-(--line) sticky top-0 backdrop-blur-sm z-10">
               {columns.map((col) => (
-                <th
-                  key={col}
-                  className="px-4 py-2.5 font-mono font-bold text-[var(--sea-ink)]"
-                >
+                <th key={col} className="px-4 py-2.5 font-mono font-bold text-(--sea-ink)">
                   {col}
                 </th>
               ))}
@@ -58,18 +58,19 @@ export default function TableViewer() {
             {rawRows.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
-                className="border-b border-[var(--line)]/50 hover:bg-white/40 last:border-b-0 transition-colors"
+                className="border-b border-(--line)/50 hover:bg-white/40 last:border-b-0 transition-colors"
               >
                 {columns.map((col) => {
                   const val = row[col];
                   return (
-                    <td
-                      key={col}
-                      className="px-4 py-2 font-mono text-[var(--sea-ink-soft)]"
-                    >
+                    <td key={col} className="px-4 py-2 font-mono text-(--sea-ink-soft)">
                       {val === null || val === undefined ? (
-                        <span className="italic text-rose-500/70 font-semibold uppercase text-[10px]">NULL</span>
-                      ) : typeof val === 'number' && col === 'preco' || col === 'valor_total' || col === 'preco_unitario' ? (
+                        <span className="italic text-rose-500/70 font-semibold uppercase text-[10px]">
+                          NULL
+                        </span>
+                      ) : (typeof val === 'number' && col === 'preco') ||
+                        col === 'valor_total' ||
+                        col === 'preco_unitario' ? (
                         `R$ ${val.toFixed(2)}`
                       ) : (
                         String(val)

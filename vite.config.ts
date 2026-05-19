@@ -13,6 +13,7 @@ const config = defineConfig({
   resolve: {
     tsconfigPaths: true,
     alias: {
+      '@': resolve(__dirname, './src'),
       'react-native': resolve(__dirname, './src/mocks/empty.ts'),
       'react-native-fs': resolve(__dirname, './src/mocks/empty.ts'),
       'react-native-fetch-blob': resolve(__dirname, './src/mocks/empty.ts'),
