@@ -2,11 +2,12 @@ import { create } from 'zustand';
 import { QUESTIONS } from '@/data/questions';
 import { executeQuery, compareResults } from '@/data/dbEngine';
 import confetti from 'canvas-confetti';
+import type { QueryResultRow } from '@/data/tables';
 
 interface GameState {
   currentQuestionIndex: number;
   userSql: string;
-  executionResult: any[] | null;
+  executionResult: QueryResultRow[] | null;
   executionColumns: string[];
   executionError: string | null;
   hasSubmitted: boolean;

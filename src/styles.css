@@ -26,6 +26,8 @@
   --link-bg-hover: rgba(255, 255, 255, 0.9);
   --hero-a: rgba(79, 184, 178, 0.36);
   --hero-b: rgba(47, 106, 74, 0.2);
+  --hover-bg: rgba(79, 184, 178, 0.18);
+  --hover-text: #173a40;
 }
 
 :root[data-theme='dark'] {
@@ -48,6 +50,8 @@
   --link-bg-hover: rgba(24, 44, 49, 0.8);
   --hero-a: rgba(96, 215, 207, 0.18);
   --hero-b: rgba(110, 200, 154, 0.12);
+  --hover-bg: rgba(96, 215, 207, 0.26);
+  --hover-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,6 +75,8 @@
     --link-bg-hover: rgba(24, 44, 49, 0.8);
     --hero-a: rgba(96, 215, 207, 0.18);
     --hero-b: rgba(110, 200, 154, 0.12);
+    --hover-bg: rgba(96, 215, 207, 0.26);
+    --hover-text: #ffffff;
   }
 }
 
@@ -139,7 +145,7 @@ a {
 }
 
 a:hover {
-  color: #246f76;
+  color: var(--hover-text);
 }
 
 code {

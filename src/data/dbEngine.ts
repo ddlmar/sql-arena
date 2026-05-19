@@ -1,5 +1,6 @@
 import alasql from 'alasql';
-import { DB_MOCK_DATA } from './questions';
+import { DB_MOCK_DATA } from './tables';
+import type { QueryResultRow } from './tables';
 
 let dbInitialized = false;
 
@@ -8,7 +9,7 @@ export function initDb() {
 
   try {
     if (alasql.options) {
-      (alasql.options as any).warnings = false;
+      (alasql.options as unknown as Record<string, boolean>).warnings = false;
     }
 
     const tables = ['itens_pedido', 'pedidos', 'produtos', 'usuarios'];
@@ -31,7 +32,7 @@ export function initDb() {
 }
 
 export interface QueryExecutionResult {
-  data: any[] | null;
+  data: QueryResultRow[] | null;
   columns: string[];
   error: string | null;
 }
@@ -57,32 +58,36 @@ export function executeQuery(sql: string): QueryExecutionResult {
       }
 
       const columns = Object.keys(result[0] || {});
-      return { data: result, columns, error: null };
+      return { data: result as QueryResultRow[], columns, error: null };
     }
 
-    return { data: [result], columns: ['resultado'], error: null };
-  } catch (err: any) {
+    return { data: [result as QueryResultRow], columns: ['resultado'], error: null };
+  } catch (err) {
     return {
       data: null,
       columns: [],
-      error: err?.message || 'Erro de sintaxe no SQL',
+      error: err instanceof Error ? err.message : 'Erro de sintaxe no SQL',
     };
   }
 }
 
-function normalizeRow(row: any): Record<string, any> {
-  if (!row || typeof row !== 'object') return row;
+function normalizeRow(row: unknown): QueryResultRow {
+  if (!row || typeof row !== 'object') return {};
 
-  const normalized: Record<string, any> = {};
-  Object.keys(row).forEach((key) => {
-    let value = row[key];
+  const normalized: QueryResultRow = {};
+  const rowObj = row as Record<string, unknown>;
+  Object.keys(rowObj).forEach((key) => {
+    const rawValue = rowObj[key];
+    let value: string | number | boolean | null = null;
 
-    if (typeof value === 'number') {
-      value = Math.round(value * 100) / 100;
-    } else if (value === null || value === undefined) {
+    if (typeof rawValue === 'number') {
+      value = Math.round(rawValue * 100) / 100;
+    } else if (typeof rawValue === 'boolean') {
+      value = rawValue;
+    } else if (rawValue === null || rawValue === undefined) {
       value = null;
     } else {
-      value = String(value).trim();
+      value = String(rawValue).trim();
     }
 
     normalized[key.toLowerCase()] = value;
@@ -91,7 +96,7 @@ function normalizeRow(row: any): Record<string, any> {
   return normalized;
 }
 
-function normalizeResults(rows: any[], isOrderStrict: boolean): any[] {
+function normalizeResults(rows: QueryResultRow[], isOrderStrict: boolean): QueryResultRow[] {
   const normalized = rows.map((r) => normalizeRow(r));
 
   if (isOrderStrict) {
@@ -111,8 +116,8 @@ export function compareResults(
 ): {
   isCorrect: boolean;
   error: string | null;
-  expectedData: any[] | null;
-  userData: any[] | null;
+  expectedData: QueryResultRow[] | null;
+  userData: QueryResultRow[] | null;
 } {
   const userResult = executeQuery(userSql);
   const expectedResult = executeQuery(expectedSql);

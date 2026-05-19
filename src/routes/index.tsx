@@ -35,9 +35,7 @@ function SQLGameApp() {
 
   return (
     <main className="page-wrap px-4 pb-16 pt-8">
-      {}
       <section className="island-shell mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-        {}
         <div className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.2),transparent_66%)]" />
 
         <div className="flex flex-col sm:flex-row items-center gap-3">
@@ -54,9 +52,7 @@ function SQLGameApp() {
           </div>
         </div>
 
-        {}
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 bg-white/20 px-5 py-2.5 rounded-xl border border-(--line) shadow-sm">
-          {}
           <div className="flex flex-col items-center">
             <span className="text-[10px] uppercase font-bold text-(--sea-ink-soft) tracking-wider">
               Pontos
@@ -69,7 +65,6 @@ function SQLGameApp() {
 
           <span className="h-8 w-px bg-(--line)" />
 
-          {}
           <div className="flex flex-col items-center min-w-[70px]">
             <span className="text-[10px] uppercase font-bold text-(--sea-ink-soft) tracking-wider">
               Combo
@@ -88,7 +83,6 @@ function SQLGameApp() {
 
           <span className="h-8 w-px bg-(--line)" />
 
-          {}
           <div className="flex flex-col items-center">
             <span className="text-[10px] uppercase font-bold text-(--sea-ink-soft) tracking-wider">
               Recorde
@@ -100,7 +94,6 @@ function SQLGameApp() {
           </div>
         </div>
 
-        {}
         <button
           onClick={resetGame}
           className="flex items-center gap-1.5 rounded-full border border-(--line) bg-white/50 px-4 py-2 text-xs font-bold text-(--sea-ink-soft) shadow-sm hover:bg-rose-500/10 hover:text-rose-600 hover:border-rose-500/20 hover:-translate-y-0.5 transition-all self-stretch md:self-auto justify-center"
@@ -155,24 +148,19 @@ function SQLGameApp() {
         </section>
       ) : (
         <div className="space-y-6">
-          {}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {}
             <div className="lg:col-span-4 flex flex-col gap-6">
               <QuestionDetails />
               <SchemaBrowser />
             </div>
 
-            {}
             <div className="lg:col-span-8 flex flex-col gap-6">
               <SqlEditor />
 
-              {}
               <div className="flex-1">
                 <QueryResultTable />
               </div>
 
-              {}
               {isCorrect && currentQuestionIndex < QUESTIONS.length - 1 && (
                 <div className="island-shell rise-in rounded-xl p-4 bg-emerald-500/5 border border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
                   <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-300">
@@ -190,7 +178,6 @@ function SQLGameApp() {
             </div>
           </div>
 
-          {}
           <div className="w-full">
             <TableViewer />
           </div>

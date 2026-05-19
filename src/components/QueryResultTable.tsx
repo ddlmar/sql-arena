@@ -28,21 +28,19 @@ export default function QueryResultTable() {
 
   return (
     <div className="island-shell flex flex-col rounded-2xl p-5 h-full">
-      {}
       <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-(--line) pb-3">
         <div className="flex items-center gap-2">
           <Table className="h-5 w-5 text-(--lagoon-deep)" />
           <h2 className="text-base font-semibold text-(--sea-ink)">Painel de Resultados</h2>
         </div>
 
-        {}
         <div className="flex bg-white/20 p-1 rounded-lg border border-(--line) self-start sm:self-auto">
           <button
             onClick={() => setActiveTab('mine')}
             className={`rounded-md px-3.5 py-1 text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'mine'
                 ? 'bg-(--lagoon-deep) text-white shadow-sm'
-                : 'text-(--sea-ink-soft) hover:bg-white/40 hover:text-(--sea-ink)'
+                : 'text-(--sea-ink-soft) hover:bg-(--hover-bg) hover:text-(--hover-text)'
             }`}
           >
             <span>Seu Resultado</span>
@@ -55,7 +53,7 @@ export default function QueryResultTable() {
             className={`rounded-md px-3.5 py-1 text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'expected'
                 ? 'bg-(--sea-ink-soft) text-white shadow-sm'
-                : 'text-(--sea-ink-soft) hover:bg-white/40 hover:text-(--sea-ink)'
+                : 'text-(--sea-ink-soft) hover:bg-(--hover-bg) hover:text-(--hover-text)'
             }`}
           >
             <span>Gabarito Esperado</span>
@@ -66,7 +64,6 @@ export default function QueryResultTable() {
         </div>
       </div>
 
-      {}
       {hasSubmitted && (
         <div
           className={`mb-4 rounded-xl p-4 border animate-pulse-subtle flex items-start gap-3 ${
@@ -102,7 +99,6 @@ export default function QueryResultTable() {
         </div>
       )}
 
-      {}
       <div className="flex-1 min-h-[220px] overflow-hidden flex flex-col">
         {activeTab === 'mine' ? (
           executionError ? (
@@ -138,12 +134,15 @@ export default function QueryResultTable() {
                   {userRows.map((row, rowIndex) => (
                     <tr
                       key={rowIndex}
-                      className="border-b border-(--line)/30 hover:bg-white/40 last:border-b-0 transition-colors"
+                      className="group border-b border-(--line)/30 hover:bg-(--hover-bg) last:border-b-0 transition-colors"
                     >
                       {userCols.map((col) => {
                         const val = row[col];
                         return (
-                          <td key={col} className="px-4 py-2 font-mono text-(--sea-ink-soft)">
+                          <td
+                            key={col}
+                            className="px-4 py-2 font-mono text-(--sea-ink-soft) group-hover:text-(--hover-text)"
+                          >
                             {val === null || val === undefined ? (
                               <span className="italic text-rose-500/70 font-semibold uppercase text-[10px]">
                                 NULL
@@ -186,12 +185,15 @@ export default function QueryResultTable() {
                   {expectedRows.map((row, rowIndex) => (
                     <tr
                       key={rowIndex}
-                      className="border-b border-emerald-500/10 hover:bg-emerald-500/10 last:border-b-0 transition-colors"
+                      className="group border-b border-emerald-500/10 hover:bg-(--hover-bg) last:border-b-0 transition-colors"
                     >
                       {expectedCols.map((col) => {
                         const val = row[col];
                         return (
-                          <td key={col} className="px-4 py-2 font-mono text-(--sea-ink-soft)">
+                          <td
+                            key={col}
+                            className="px-4 py-2 font-mono text-(--sea-ink-soft) group-hover:text-(--hover-text)"
+                          >
                             {val === null || val === undefined ? (
                               <span className="italic text-rose-500/70 font-semibold uppercase text-[10px]">
                                 NULL

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { DB_SCHEMA } from '@/data/questions';
-import type { TableSchema } from '@/data/questions';
+import { DB_SCHEMA } from '@/data/tables';
+import type { TableSchema } from '@/data/tables';
 import { Database, Copy, Check, ChevronDown, ChevronRight } from 'lucide-react';
 
 export default function SchemaBrowser() {
@@ -45,7 +45,7 @@ export default function SchemaBrowser() {
                 <button
                   type="button"
                   onClick={() => toggleTable(table.name)}
-                  className="flex flex-1 items-center gap-2 text-left hover:text-(--lagoon-deep) focus:outline-none cursor-pointer"
+                  className="flex flex-1 items-center gap-2 text-left hover:text-(--hover-text) focus:outline-none cursor-pointer"
                 >
                   {isExpanded ? (
                     <ChevronDown className="h-4 w-4 text-(--sea-ink-soft)" />
@@ -57,7 +57,7 @@ export default function SchemaBrowser() {
                 <button
                   type="button"
                   onClick={() => copyToClipboard(table.name)}
-                  className="rounded p-1 text-(--sea-ink-soft) hover:bg-white/40 hover:text-(--lagoon-deep) focus:outline-none cursor-pointer"
+                  className="rounded p-1 text-(--sea-ink-soft) hover:bg-(--hover-bg) hover:text-(--hover-text) focus:outline-none cursor-pointer"
                   title="Copiar nome da tabela"
                 >
                   {copiedText === table.name ? (
@@ -77,11 +77,11 @@ export default function SchemaBrowser() {
                       <div
                         key={col.name}
                         onClick={() => copyToClipboard(col.name)}
-                        className="group flex cursor-pointer items-start justify-between rounded p-1.5 hover:bg-white/60"
+                        className="group flex cursor-pointer items-start justify-between rounded p-1.5 hover:bg-(--hover-bg)"
                       >
                         <div className="flex flex-col">
                           <div className="flex items-center gap-2">
-                            <span className="font-mono text-xs font-semibold text-(--sea-ink) group-hover:text-(--lagoon-deep)">
+                            <span className="font-mono text-xs font-semibold text-(--sea-ink) group-hover:text-(--hover-text)">
                               {col.name}
                             </span>
                             <span className="rounded bg-(--line) px-1 py-0.5 text-[9px] font-mono text-(--sea-ink-soft) uppercase">

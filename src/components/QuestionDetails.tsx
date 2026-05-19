@@ -23,9 +23,7 @@ export default function QuestionDetails() {
 
   return (
     <div className="flex flex-col gap-5 h-full">
-      {}
       <div className="island-shell flex flex-col rounded-2xl p-5 relative overflow-hidden">
-        {}
         <div className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.18),transparent_66%)]" />
 
         <div className="flex items-center justify-between border-b border-(--line) pb-3 mb-4">
@@ -48,7 +46,6 @@ export default function QuestionDetails() {
 
         <p className="text-sm text-(--sea-ink-soft) leading-relaxed mb-4">{question.description}</p>
 
-        {}
         <div className="mt-auto border-t border-(--line) pt-4">
           <div className="flex items-center justify-between mb-2">
             <h4 className="text-xs font-bold text-(--sea-ink) flex items-center gap-1.5">
@@ -59,7 +56,7 @@ export default function QuestionDetails() {
             {currentHintIndex < question.hints.length - 1 && (
               <button
                 onClick={revealHint}
-                className="text-[10px] font-bold text-(--lagoon-deep) hover:underline flex items-center gap-0.5 bg-white/50 px-2 py-1 rounded-md border border-(--line) transition"
+                className="text-[10px] font-bold text-(--lagoon-deep) hover:bg-(--hover-bg) hover:text-(--hover-text) flex items-center gap-0.5 bg-white/50 px-2 py-1 rounded-md border border-(--line) transition"
               >
                 <span>Revelar Dica ({currentHintIndex + 2})</span>
                 <ChevronRight className="h-3 w-3" />
@@ -87,7 +84,6 @@ export default function QuestionDetails() {
         </div>
       </div>
 
-      {}
       <div className="island-shell flex flex-col rounded-2xl p-5">
         <div className="mb-4 flex items-center gap-2 border-b border-(--line) pb-3">
           <Award className="h-5 w-5 text-(--lagoon-deep)" />
@@ -108,7 +104,7 @@ export default function QuestionDetails() {
                     ? 'bg-(--lagoon-deep) border-(--lagoon-deep) text-white shadow-md'
                     : isCompleted
                       ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 hover:bg-emerald-500/20'
-                      : 'bg-white/40 border-(--line) text-(--sea-ink-soft) hover:border-[rgba(23,58,64,0.3)] hover:bg-white/70'
+                      : 'bg-white/40 border-(--line) text-(--sea-ink-soft) hover:bg-(--hover-bg) hover:text-(--hover-text)'
                 }`}
                 title={`${q.title} (${q.difficulty})`}
               >
@@ -129,7 +125,6 @@ export default function QuestionDetails() {
           })}
         </div>
 
-        {}
         <div className="mt-4 border-t border-(--line) pt-3">
           <div className="flex justify-between text-[11px] font-bold text-(--sea-ink-soft) mb-1">
             <span>Progresso Geral</span>

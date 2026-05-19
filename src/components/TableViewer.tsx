@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DB_MOCK_DATA } from '@/data/questions';
+import { DB_MOCK_DATA } from '@/data/tables';
 import { Eye, Table } from 'lucide-react';
 
 export default function TableViewer() {
@@ -28,7 +28,7 @@ export default function TableViewer() {
               className={`rounded-md px-3 py-1 font-mono text-xs font-semibold transition-all ${
                 activeTable === name
                   ? 'bg-(--lagoon-deep) text-white shadow-sm'
-                  : 'text-(--sea-ink-soft) hover:bg-white/40 hover:text-(--sea-ink)'
+                  : 'text-(--sea-ink-soft) hover:bg-(--hover-bg) hover:text-(--hover-text)'
               }`}
             >
               {name}
@@ -58,19 +58,21 @@ export default function TableViewer() {
             {rawRows.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
-                className="border-b border-(--line)/50 hover:bg-white/40 last:border-b-0 transition-colors"
+                className="group border-b border-(--line)/50 hover:bg-(--hover-bg) last:border-b-0 transition-colors"
               >
                 {columns.map((col) => {
                   const val = row[col];
                   return (
-                    <td key={col} className="px-4 py-2 font-mono text-(--sea-ink-soft)">
+                    <td
+                      key={col}
+                      className="px-4 py-2 font-mono text-(--sea-ink-soft) group-hover:text-(--hover-text)"
+                    >
                       {val === null || val === undefined ? (
                         <span className="italic text-rose-500/70 font-semibold uppercase text-[10px]">
                           NULL
                         </span>
-                      ) : (typeof val === 'number' && col === 'preco') ||
-                        col === 'valor_total' ||
-                        col === 'preco_unitario' ? (
+                      ) : typeof val === 'number' &&
+                        (col === 'preco' || col === 'valor_total' || col === 'preco_unitario') ? (
                         `R$ ${val.toFixed(2)}`
                       ) : (
                         String(val)

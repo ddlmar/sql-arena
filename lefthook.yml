@@ -1,0 +1,15 @@
+# Lefthook Configuration
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    linter:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm exec eslint {staged_files} --fix
+      stage_fixed: true
+    format:
+      glob: "*.{js,ts,jsx,tsx,css,json,md}"
+      run: pnpm exec prettier --check {staged_files}
+    typecheck:
+      run: pnpm typecheck

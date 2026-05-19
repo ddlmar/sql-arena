@@ -30,10 +30,8 @@ export default function SqlEditor() {
 
   return (
     <div className="island-shell flex flex-col rounded-2xl overflow-hidden border border-(--line)">
-      {}
       <div className="flex items-center justify-between bg-(--chip-bg) border-b border-(--line) px-4 py-2.5">
         <div className="flex items-center gap-2">
-          {}
           <div className="flex gap-1.5">
             <span className="h-3 w-3 rounded-full bg-rose-400/80" />
             <span className="h-3 w-3 rounded-full bg-amber-400/80" />
@@ -61,9 +59,7 @@ export default function SqlEditor() {
         </div>
       </div>
 
-      {}
       <div className="flex flex-1 relative bg-white/10 font-mono text-sm leading-6 min-h-[180px]">
-        {}
         <div
           ref={lineCounterRef}
           className="select-none text-right px-3 py-3 border-r border-(--line) bg-(--chip-bg)/40 text-(--sea-ink-soft)/50 text-xs font-mono overflow-hidden"
@@ -74,7 +70,6 @@ export default function SqlEditor() {
           ))}
         </div>
 
-        {}
         <textarea
           ref={textareaRef}
           value={userSql}
@@ -88,9 +83,7 @@ export default function SqlEditor() {
         />
       </div>
 
-      {}
       <div className="flex items-center justify-between border-t border-(--line) bg-(--chip-bg)/60 px-4 py-2.5">
-        {}
         <div className="flex items-center gap-2 max-w-[70%]">
           {executionError ? (
             <div className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400 text-xs">
@@ -107,7 +100,6 @@ export default function SqlEditor() {
           )}
         </div>
 
-        {}
         <button
           onClick={submitAnswer}
           className="flex items-center gap-1.5 rounded-full bg-(--lagoon-deep) text-white px-5 py-1.5 text-xs font-bold shadow-md hover:bg-(--lagoon) hover:-translate-y-0.5 transition-all"
